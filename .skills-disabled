@@ -1,0 +1,16 @@
+# Skills désactivés — lus par shared/scripts/sync-skill.sh au démarrage de session.
+#
+# Un nom par ligne = le dossier sous skills/ ou shared/skills/ N'EST PAS copié
+# vers .claude/skills/ ni .cursor/skills/. Les fichiers sources restent intacts :
+# rien n'est supprimé, seul l'enregistrement auprès de Claude Code est retiré.
+#
+# Pour réactiver : supprime (ou commente avec #) la ligne, puis lance
+#   ./scripts/sync-skill.sh
+# Les lignes vides et celles commençant par # sont ignorées.
+
+# --- Stack Arcads, désactivée le 2026-09-14 ---
+arcads-external-api
+chatgpt-image-ad
+generate-youtube-thumbnail
+image-ad-clone
+nano-banana-image-ad

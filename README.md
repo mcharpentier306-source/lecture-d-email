@@ -2,6 +2,14 @@
 
 Create AI marketing videos and images using your [Arcads](https://arcads.ai/?via=claude-code) account, powered by AI agents in **Claude Code** or **Cursor**. Supports the full Arcads creative stack — **Seedance 2.0** (flagship video), **Sora 2**, **Veo 3.1**, **Kling 3.0**, **Grok Video**, **Nano Banana 2 / Pro / Edit**, **ChatGPT Image 2**, **OmniHuman**, and **Audio-driven** — plus a 37-template static Meta image-ad library and a pipeline for **Pixar-style** and **claymation** animated ads.
 
+> **État local : la stack Arcads est désactivée.**
+> Les 5 skills Arcads (`arcads-external-api`, `chatgpt-image-ad`, `generate-youtube-thumbnail`,
+> `image-ad-clone`, `nano-banana-image-ad`) sont listés dans [`.skills-disabled`](.skills-disabled) :
+> leurs fichiers sont intacts, mais ils ne sont plus chargés par Claude Code ni Cursor.
+> Seuls `editor-pro-max` (montage vidéo local) et `meta-ad-builder` (publication Meta) sont actifs.
+> Pour tout réactiver : vider `.skills-disabled` puis lancer `./scripts/sync-skill.sh`.
+> Tout ce qui est décrit ci-dessous reste valable une fois les skills réactivés.
+
 ## 🎥 Watch the walkthrough
 
 [![How To Build Entire AI Ad Campaigns With Claude Code (free repo)](https://i.ytimg.com/vi/HHGQN9Zqaxo/hqdefault.jpg)](https://youtu.be/HHGQN9Zqaxo)
@@ -270,6 +278,7 @@ The cross-API `meta-ad-builder` skill (in `shared/skills/`) takes a finished cre
 | `MASTER_CONTEXT.md` | Your personalized copy (created by setup, not committed to git). |
 | `.env` | Your API key (created by setup, never committed). |
 | `scripts/setup.sh` | One-time setup. |
+| `.skills-disabled` | Liste des skills à ne pas enregistrer (un nom par ligne, `#` pour commenter). Lu par `sync-skill.sh` ; les sources ne sont jamais supprimées. |
 | `scripts/sync-skill.sh` | Copies skill edits to `.claude/` and `.cursor/` directories. |
 | `scripts/check-arcads-env.sh` | Tests API connectivity. |
 | `references/` | Drop reference images here (influencers, products, aesthetics) — gitignored. |

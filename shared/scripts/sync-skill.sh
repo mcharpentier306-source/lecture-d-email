@@ -9,6 +9,11 @@
 #                     carrying a SKILL.md are registered; prompting-only shared
 #                     content folders are skipped)
 #
+# A skill named in .skills-disabled (one per line, # for comments) is NOT
+# registered, and any previously-synced copy of it is removed from
+# .claude/skills/ and .cursor/skills/. The source files under skills/ and
+# shared/skills/ are never touched — deleting its line re-enables it.
+#
 # Resolves project root robustly so it works whether invoked as `scripts/sync-skill.sh`
 # (the legacy location) or `shared/scripts/sync-skill.sh` (the propagated copy).
 set -euo pipefail
@@ -19,6 +24,22 @@ if [[ "$(basename "$ROOT")" == "shared" ]]; then
   ROOT="$(dirname "$ROOT")"
 fi
 
+DISABLED_FILE="$ROOT/.skills-disabled"
+
+# True when $1 is listed in .skills-disabled (blank lines and # comments ignored).
+is_disabled() {
+  [[ -f "$DISABLED_FILE" ]] || return 1
+  local line
+  while IFS= read -r line || [[ -n "$line" ]]; do
+    line="${line%%#*}"                 # strip trailing comment
+    line="${line#"${line%%[![:space:]]*}"}"   # ltrim
+    line="${line%"${line##*[![:space:]]}"}"   # rtrim
+    [[ -z "$line" ]] && continue
+    [[ "$line" == "$1" ]] && return 0
+  done < "$DISABLED_FILE"
+  return 1
+}
+
 # Register every top-level directory under $1 that contains a SKILL.md.
 sync_skills_from() {
   local src_dir="$1"
@@ -28,6 +49,12 @@ sync_skills_from() {
     local skill_name
     skill_name=$(basename "$skill_path")
     if [[ ! -f "$skill_path/SKILL.md" ]]; then
+      continue
+    fi
+    if is_disabled "$skill_name"; then
+      # Drop any copy left over from before it was disabled. Sources untouched.
+      rm -rf "$ROOT/.claude/skills/$skill_name" "$ROOT/.cursor/skills/$skill_name"
+      echo "Skipped $skill_name skill (listed in .skills-disabled)"
       continue
     fi
     for dest in "$ROOT/.claude/skills/$skill_name" "$ROOT/.cursor/skills/$skill_name"; do
