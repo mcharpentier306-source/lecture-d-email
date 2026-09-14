@@ -262,6 +262,8 @@ The cross-API `meta-ad-builder` skill (in `shared/skills/`) takes a finished cre
 | `shared/skills/pixar-style-ad/` | Cross-API recipe: 8-beat anthropomorphized mascot ad via GPT Image 2 storyboard + Seedance 2.0 i2v. |
 | `shared/skills/claymation-ad/` | Cross-API recipe: Aardman-style 8-beat clay narrative ad; same backbone as Pixar with stop-motion judder option. |
 | `shared/skills/caption-video/` | Out-of-band post step: HyperFrames + Whisper + ffmpeg chroma-key to burn captions onto any finished MP4. |
+| `skills/editor-pro-max/` | Local video post-production: cut, caption, assemble and render with Remotion. Entry point for the vendored project below. |
+| `tools/editor-pro-max/` | Vendored [Editor Pro Max](https://github.com/Hainrixz/editor-pro-max) — Remotion + React 19 + Whisper video editor: 25 components, 10 templates, 5 pipeline scripts, plus 8 third-party reference skills under `.agents/skills/`. Pinned rev in `.vendor-rev`. |
 | `shared/skills/meta-ad-builder/` | Publish finished creatives as paused Meta ads via the Meta Marketing API. |
 | `shared/scripts/check-context.sh` | SessionStart banner — lists installed skills, checks `.env` / `MASTER_CONTEXT.md` status, surfaces ecosystem pointers. Hooked into `.claude/settings.json`. |
 | `MASTER_CONTEXT.template.md` | Template for your workspace context (credit costs, brand voice, learnings). |

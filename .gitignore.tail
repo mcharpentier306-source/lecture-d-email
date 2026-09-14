@@ -3,3 +3,14 @@ scripts/generate-thumbnails.sh
 scripts/generate-thumbnails-*.sh
 scripts/generate-ab-variants*.sh
 scripts/regen-*.sh
+
+# --- Editor Pro Max (vendored Remotion project under tools/) ---
+tools/editor-pro-max/node_modules/
+tools/editor-pro-max/out/
+tools/editor-pro-max/dist/
+tools/editor-pro-max/build/
+tools/editor-pro-max/public/assets/
+tools/editor-pro-max/media/
+# Re-include the vendored skills' reference docs: the global `references/`
+# rule above matches at every level and would otherwise swallow them.
+!tools/editor-pro-max/.agents/skills/**/references/
