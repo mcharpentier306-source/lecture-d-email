@@ -120,4 +120,10 @@ Output lands in `tools/editor-pro-max/out/` (gitignored). Copy or move the final
 - **Media and renders are gitignored** (`public/assets/`, `out/`, `media/`, `node_modules/`). Nothing heavy gets committed; conversely, don't assume a teammate has your source footage.
 - **`npx tsc --noEmit` before rendering.** Remotion fails late and noisily on type errors.
 - **Durations are in frames, not seconds** (`durationInFrames = seconds * fps`, default 30fps). Off-by-30 is the classic bug.
+- **Headless / sandboxed environments (Claude Code on the web, CI):** Remotion downloads its own Chrome Headless Shell on first render, which a restricted network blocks. Point it at an existing binary instead — and it must be a *headless shell*, not a full Chrome, since Remotion uses old headless mode:
+  ```bash
+  npx remotion render TikTok out/v.mp4 \
+    --browser-executable=/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell
+  ```
+  Passing the regular `chromium-*/chrome-linux/chrome` fails with *"Old Headless mode has been removed"*. On a normal local machine no flag is needed. Google Fonts may also be blocked in such environments — text renders with a fallback face rather than failing.
 - **Upgrading the vendored copy**: re-clone upstream, diff against `tools/editor-pro-max/`, and bump `.vendor-rev`. Local changes to the vendored tree are yours to re-apply.
