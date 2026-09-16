@@ -6,7 +6,7 @@ Create AI marketing videos and images using your [Arcads](https://arcads.ai/?via
 > Les 5 skills Arcads (`arcads-external-api`, `chatgpt-image-ad`, `generate-youtube-thumbnail`,
 > `image-ad-clone`, `nano-banana-image-ad`) sont listés dans [`.skills-disabled`](.skills-disabled) :
 > leurs fichiers sont intacts, mais ils ne sont plus chargés par Claude Code ni Cursor.
-> Seuls `editor-pro-max` (montage vidéo local) et `meta-ad-builder` (publication Meta) sont actifs.
+> Seul `meta-ad-builder` (publication Meta) reste actif.
 > Pour tout réactiver : vider `.skills-disabled` puis lancer `./scripts/sync-skill.sh` (le wrapper local, pas celui de `shared/`).
 > Tout ce qui est décrit ci-dessous reste valable une fois les skills réactivés.
 
@@ -270,8 +270,6 @@ The cross-API `meta-ad-builder` skill (in `shared/skills/`) takes a finished cre
 | `shared/skills/pixar-style-ad/` | Cross-API recipe: 8-beat anthropomorphized mascot ad via GPT Image 2 storyboard + Seedance 2.0 i2v. |
 | `shared/skills/claymation-ad/` | Cross-API recipe: Aardman-style 8-beat clay narrative ad; same backbone as Pixar with stop-motion judder option. |
 | `shared/skills/caption-video/` | Out-of-band post step: HyperFrames + Whisper + ffmpeg chroma-key to burn captions onto any finished MP4. |
-| `skills/editor-pro-max/` | Local video post-production: cut, caption, assemble and render with Remotion. Entry point for the vendored project below. |
-| `tools/editor-pro-max/` | Vendored [Editor Pro Max](https://github.com/Hainrixz/editor-pro-max) — Remotion + React 19 + Whisper video editor: 25 components, 10 templates, 5 pipeline scripts, plus 8 third-party reference skills under `.agents/skills/`. Pinned rev in `.vendor-rev`. |
 | `shared/skills/meta-ad-builder/` | Publish finished creatives as paused Meta ads via the Meta Marketing API. |
 | `shared/scripts/check-context.sh` | SessionStart banner — lists installed skills, checks `.env` / `MASTER_CONTEXT.md` status, surfaces ecosystem pointers. Hooked into `.claude/settings.json`. |
 | `MASTER_CONTEXT.template.md` | Template for your workspace context (credit costs, brand voice, learnings). |
