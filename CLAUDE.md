@@ -5,7 +5,7 @@
 - **Montage vidéo (local, sans API) :** `skills/editor-pro-max/SKILL.md` — projet Remotion vendorisé dans `tools/editor-pro-max/` pour couper, sous-titrer, assembler et rendre de la vidéo. Aucune clé API, aucun crédit. Ne génère pas d'images ni de rushes IA.
 - **Publication Meta :** `shared/skills/meta-ad-builder/SKILL.md` — envoie un créa fini vers l'API Meta Marketing. Toute pub est créée en PAUSE. Auth via les clés `META_*` du `.env`.
 - **Premier lancement :** si `MASTER_CONTEXT.md` est absent, copier `MASTER_CONTEXT.template.md` vers `MASTER_CONTEXT.md`.
-- **Activer / désactiver un skill :** éditer `.skills-disabled` (un nom par ligne) puis lancer `./scripts/sync-skill.sh`. Les sources sous `skills/` et `shared/skills/` ne sont jamais supprimées.
+- **Activer / désactiver un skill :** éditer `.skills-disabled` (un nom par ligne) puis lancer `./scripts/sync-skill.sh` — **toujours ce chemin-là**, pas `shared/scripts/sync-skill.sh` : c'est le wrapper local qui applique `.skills-disabled`, et lui seul survit aux propagations depuis gen-ai-core. Les sources sous `skills/` et `shared/skills/` ne sont jamais supprimées.
 
 # Arcads — DÉSACTIVÉ le 2026-09-14
 

@@ -7,7 +7,7 @@ Create AI marketing videos and images using your [Arcads](https://arcads.ai/?via
 > `image-ad-clone`, `nano-banana-image-ad`) sont listés dans [`.skills-disabled`](.skills-disabled) :
 > leurs fichiers sont intacts, mais ils ne sont plus chargés par Claude Code ni Cursor.
 > Seuls `editor-pro-max` (montage vidéo local) et `meta-ad-builder` (publication Meta) sont actifs.
-> Pour tout réactiver : vider `.skills-disabled` puis lancer `./scripts/sync-skill.sh`.
+> Pour tout réactiver : vider `.skills-disabled` puis lancer `./scripts/sync-skill.sh` (le wrapper local, pas celui de `shared/`).
 > Tout ce qui est décrit ci-dessous reste valable une fois les skills réactivés.
 
 ## 🎥 Watch the walkthrough

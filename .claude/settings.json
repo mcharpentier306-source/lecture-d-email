@@ -3,8 +3,14 @@
     "SessionStart": [
       {
         "hooks": [
-          { "type": "command", "command": "bash shared/scripts/sync-skill.sh" },
-          { "type": "command", "command": "bash shared/scripts/check-context.sh" }
+          {
+            "type": "command",
+            "command": "bash scripts/sync-skill.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash shared/scripts/check-context.sh"
+          }
         ]
       }
     ]
