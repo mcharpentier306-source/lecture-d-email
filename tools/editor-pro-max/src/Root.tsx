@@ -16,6 +16,12 @@ import {Testimonial} from "./templates/content/Testimonial";
 import {Announcement} from "./templates/promo/Announcement";
 import {BeforeAfterDemo} from "./compositions/BeforeAfterDemo";
 
+// Social posts
+import {
+  ImmobilierCinqErreurs,
+  TOTAL_FRAMES as IMMO_FRAMES,
+} from "./compositions/ImmobilierCinqErreurs";
+
 // Editing templates
 import {TalkingHeadEdit} from "./templates/editing/TalkingHeadEdit";
 import {PodcastClip} from "./templates/editing/PodcastClip";
@@ -23,6 +29,17 @@ import {PodcastClip} from "./templates/editing/PodcastClip";
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      <Folder name="Posts">
+        <Composition
+          id="ImmobilierCinqErreurs"
+          component={ImmobilierCinqErreurs}
+          durationInFrames={IMMO_FRAMES}
+          fps={30}
+          width={1080}
+          height={1350}
+        />
+      </Folder>
+
       <Folder name="Examples">
         <Composition
           id="Showcase"
